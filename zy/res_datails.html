@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="资源详情" />
+    <meta name="description" content="资源详情" />
+    <title>资源详情</title>
+    <link rel="stylesheet" type="text/css" href="common/css/base.css">
+    <link rel="stylesheet" type="text/css" href="common/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="common/css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/datails.css">
+
+</head>
+<body>
+    <section id="app" v-cloak>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="d_info_box">
+            <div class="d_info_pad">
+                <h2 class="weui-media-box__title"><img src="images/qiu.png" />我公司技术团队曾服务过阿里等知名企业 服务好全可靠</h2>
+                <p>&yen; <big>9,000.00</big><span>/&nbsp;￥3,000.00 (剩余)</span></p>
+                <div class="weui-flex d_info">
+                  <div>剩余30天</div>
+                  <div class="weui-flex__item center">互联网/互联网+</div>
+                  <div>江苏无锡</div>
+                </div>
+            </div>
+            <div class="weui-cell d_commission">
+                <div class="weui-cell__bd">悬赏佣金: ￥1,000.00</div>
+                <div class="weui-cell__ft bot" @click="dialog=true">立即领取</div>
+              </div>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells" @click="animate(1)">
+                <h3 class="weui-cell__bd">需求描述</h3>
+                <transition name="rotate">
+                    <div class="weui-cell__ft"><img :class="{rotate:isRotate}" src="images/up.png" /></div>
+                </transition>
+            </div>
+            <transition name="bounce">
+                <div class="need_msg" v-if="show">
+                    <p>技术研发团队建立了一整套以EShow（公司核心技术架构）为基础的移动端一站式解决方案，包含了智能硬件解决方案，同城配送解决方案，P2P金融解决方案，现金贷解决方案，社区O2O解决方案等被用户广泛使用的技术经验，并致力于网站的技术创新和平台化运营。</p>
+                    <p>其中，公司核心团队开发了一整套基础技术方案，包括快速提现，一站式支付，API网关，蓝牙SDK，图片处理，等加快产品开发，提升产品稳定性的技术支撑产品。努力打造出属于自己的产品。</p>
+                    <p>
+                        此外，公司在移动互联网积极布局，并推出自己的产品推客邦进行尝试。通过技术的积累，目前可提供后端架构、高质量UI、iOS、Android的全方位开发，尤其在后端架构接口开发、语音、照片、视频具有完整的高质量解决方案，并后续为客户提供推广运营方案。
+                    </p>
+                </div>
+            </transition>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells" @click="animate(2)">
+                <h3 class="weui-cell__bd">联系信息</h3>
+                <div class="weui-cell__ft"><img :class="{rotate:isRotate1}" src="images/up.png" /></div>
+            </div>
+            <transition name="bounce">
+                <ul class="lxr_info" v-if="show1">
+                  <li class="weui-cell">
+                    <div class="weui-cell__bd">联系人</div>
+                    <div class="weui-cell__ft">席南</div>
+                  </li>
+                  <li class="weui-cell">
+                    <div class="weui-cell__bd">联系方式</div>
+                    <div class="weui-cell__ft">15822365455</div>
+                  </li>
+                </ul>
+            </transition>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells" @click="animate(3)">
+                <h3 class="weui-cell__bd">领取详情(2)</h3>
+                <div class="weui-cell__ft"><img :class="{rotate:isRotate2}" src="images/up.png" /></div>
+            </div>
+            <transition name="bounce">
+                <ul class="lq_info" v-if="show2">
+                  <li class="weui-cell">
+                    <div class="weui-cell__hd tx"><img src="images/tx.jpg" alt="" ></div>
+                    <div class="weui-cell__bd">
+                        <h4>我是名字</h4>
+                        <p>25分钟前领取了</p>
+                    </div>
+                    <div class="weui-cell__ft lq_money">&yen;1000.00</div>
+                  </li>
+                  <li class="weui-cell">
+                    <div class="weui-cell__hd tx"><img src="images/tx.jpg" alt="" ></div>
+                    <div class="weui-cell__bd">
+                        <h4>我是名字</h4>
+                        <p>25分钟前领取了</p>
+                    </div>
+                    <div class="weui-cell__ft lq_money">&yen;1000.00</div>
+                  </li>
+                </ul>
+            </transition>
+        </div>
+
+
+
+        <div class="weui-mask weui-mask--visible" v-show="dialog">
+            <div class="weui-dialog weui-dialog--visible">
+                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
+    </section>
+    <div class="bottom_line"></div>
+
+    
+
+    <script type="text/javascript" src="common/js/vue.js"></script>
+    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                show:true,
+                isRotate:false,
+                show1:true,
+                isRotate1:false,
+                show2:true,
+                isRotate2:false,
+                dialog:false
+            },
+            mounted:function(){
+                this.swiper();
+            },
+            methods:{
+               swiper:function(){
+                    new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true,
+                        autoplay : 3000,
+                        loop:true
+                    });
+               },
+               animate:function(num){
+                    if(num==1){
+                        this.show = !this.show
+                        this.isRotate = !this.isRotate
+                    }else if(num==2){
+                        this.show1 = !this.show1
+                        this.isRotate1 = !this.isRotate1
+                    }else if(num==3){
+                        this.show2 = !this.show2
+                        this.isRotate2 = !this.isRotate2
+                    }
+               },
+            }
+        })
+    </script>
+</body>
+</html>

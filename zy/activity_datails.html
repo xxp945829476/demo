@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="活动详情" />
+    <meta name="description" content="活动详情" />
+    <title>活动详情</title>
+    <link rel="stylesheet" type="text/css" href="common/css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="common/css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/datails.css">
+
+</head>
+<body>
+    <section id="app" v-cloak>
+        <div class="act_ban">
+            <img src="images/ban.jpg">
+        </div>
+
+        <div class="act_msg">
+            <div class="v_title act_title weui-cells">
+                <h2 class="weui-media-box__desc">2017凤凰网财经峰会：决策与市场</h2>
+                <p><time>11月28日</time><span><img src="images/eyes.png" />20865</span></p>
+            </div>
+            <ul>
+                <li class="weui-cell"><img src="images/time_icon.png" />2017/12/02 13:00-12/03  19:00</li>
+                <li class="weui-cell"><img src="images/address_icon.png" />北京朝阳 建国门外大街1号国贸大酒店</li>
+                <li class="weui-cell"><img src="images/people_icon.png" />已报名421人/限4500人报名</li>
+            </ul>
+            <div class="weui-cell mp_box"  @click="dialog=true">
+                <div class=""><img class="mp" src="images/mp.png"></div>
+                <div class="weui-cell__bd">&yen;0-1880</div>
+                <div class="weui-cell__ft"><img class="right_angle" src="images/right_angle.png"></div>
+            </div>
+        </div>
+
+
+        <div class="act_intro">
+            <h2 class="weui-cell weui-panel">活动介绍</h2>
+            <div class="act_intro_main">
+                <h3>会议背景</h3>
+                <p>
+                    随着大量民营企业的上市，市值管理成为当今中国资本市场的一大热点。由于市值管理乃国人首创，无发达市场现成的模板可循，再加上中国新兴资本市场的特色，对市值管理内涵的理解无奇不有，有的将市值管理理解为管理市值，于是走上了操纵股价的道路；有的将市值管理等于投资者关系，以致于投资者调研越多公司市值跌得越多而不知其所以然。
+正是由于存在不同的市值管理理解，由此衍生出了千奇百怪的市值管理实践，总体来说形成了六大市值管理模式。
+这其中既有违法违规的邪门歪道式的所谓市值管理，也有只及一点无触其它的偏道式的市值管理，当然也有价值创造、价值营销与价值经营并重的市值管理正道。因此，总结当前市场上存在的市值管理模式，对于上市公司全面和正确了解市值管理，从而开展科学、有效和合规的市值管理，具有重要的现实意义。
+                </p>
+            </div>
+        </div>
+        
+
+        <div class="weui-mask weui-mask--visible" v-show="dialog">
+            <div class="weui-dialog weui-dialog--visible">
+                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
+                </div>
+            </div>
+        </div>
+        <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
+    </section>
+    <div class="bottom_line"></div>
+
+    
+
+    <script type="text/javascript" src="common/js/vue.js"></script>
+    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script>
+
+        
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                dialog:false,
+            },
+            mounted:function(){
+                    
+            },
+            methods:{
+                
+            }
+        })
+
+        
+         
+    </script>
+</body>
+</html>

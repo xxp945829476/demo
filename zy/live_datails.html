@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="学习详情" />
+    <meta name="description" content="学习详情" />
+    <title>学习详情</title>
+    <link rel="stylesheet" type="text/css" href="common/css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="common/css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/datails.css">
+
+</head>
+<body>
+    <section id="app" v-cloak>
+        <div class="v_box">
+            <video id="media" src="zzz.mp4" controls="controls" preload width="100%"></video>
+            <div class="v_play" v-show="video" @click="play"><img src="images/play.png" /></div>
+        </div>
+        <div class="live_info_bx">
+            <div class="weui-cell live_info">
+                <div class="weui-cell__hd live_tx"><img src="images/tx.jpg"></div>
+                <div class="weui-cell__bd live_name">
+                    <h2>刘牧坤</h2>
+                    <p class="weui-media-box__desc">正在直播:飞天智能 2017杭州云栖大会全程直播州云栖大会全程直播州云栖大会全程直播</p>
+                </div>
+            </div>
+            <div class="live_content">
+                介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内容介绍内
+            </div>
+        </div>
+
+        <div class="live_recommend">
+            <h3><span>相关推荐</span></h3>
+            <ul>
+                <li @click="dialog=true">
+                    <div class="live_pic">
+                        <img src="images/line_pic.jpg" />
+                        <span>直播中</span>
+                    </div>
+                    <h4>国大直播国大直播国大直播</h4>
+                    <dl>
+                        <dt>国大e联官方帐号</dt>
+                        <dd>1.2万人</dd>
+                    </dl>
+                </li>
+                <li @click="dialog=true">
+                    <div class="live_pic">
+                        <img src="images/line_pic.jpg" />
+                        <span>直播中</span>
+                    </div>
+                    <h4>国大直播国大直播国大直播</h4>
+                    <dl>
+                        <dt>国大e联官方帐号</dt>
+                        <dd>1.2万人</dd>
+                    </dl>
+                </li>
+                <li @click="dialog=true">
+                    <div class="live_pic">
+                        <img src="images/line_pic.jpg" />
+                        <span>直播中</span>
+                    </div>
+                    <h4>国大直播国大直播国大直播</h4>
+                    <dl>
+                        <dt>国大e联官方帐号</dt>
+                        <dd>1.2万人</dd>
+                    </dl>
+                </li>
+                <li @click="dialog=true">
+                    <div class="live_pic">
+                        <img src="images/line_pic.jpg" />
+                        <span class="hf">回放</span>
+                    </div>
+                    <h4 class="weui-media-box__title">国大直播国大直播国大直播国大直播国大直播国大直播</h4>
+                    <dl>
+                        <dt>国大e联官方帐号</dt>
+                        <dd>1.2万人</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        
+
+        <div class="weui-mask weui-mask--visible" v-show="dialog">
+            <div class="weui-dialog weui-dialog--visible">
+                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
+                </div>
+            </div>
+        </div>
+        <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
+    </section>
+    <div class="bottom_line"></div>
+
+    
+
+    <script type="text/javascript" src="common/js/vue.js"></script>
+    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script>
+        
+        
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                dialog:false,
+                video:true
+            },
+            mounted:function(){
+                this.show()
+            },
+            methods:{
+                show:function(){
+                    var that = this;
+                    var md = document.getElementById('media');
+                    md.addEventListener('play',function(){
+                                    that.video = false;
+                     });
+                    md.addEventListener('pause',function(){  
+                        that.video = true;  
+                    }) 
+                },
+                play:function(){
+                    var that = this;
+                    var md = document.getElementById('media')
+                    md.play();
+                    that.video = false;
+                    md.addEventListener('ended',function(){  
+                        that.video = true;  
+                    });
+                }
+            }
+        })
+
+
+
+        
+    </script>
+</body>
+</html>

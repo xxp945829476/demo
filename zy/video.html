@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="学习详情" />
+    <meta name="description" content="学习详情" />
+    <title>学习详情</title>
+    <link rel="stylesheet" type="text/css" href="common/css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="common/css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/datails.css">
+    <link rel="stylesheet" type="text/css" href="css/comment.css">
+
+</head>
+<body>
+    <section id="app" v-cloak>
+        <div class="vi_top" id="vi_top">
+            <div class="v_box">
+                <video id="media" src="zzz.mp4" controls="controls" preload width="100%"></video>
+                <div class="v_play" v-show="video" @click="play"><img src="images/play.png" /></div>
+            </div>
+            <div class="v_title">
+                <h2 class="weui-media-box__desc">被骂无数，苦战20年，他在全世界的封锁下，为中国拼出世界第一</h2>
+                <p>金融/投融资<time>1小时前</time><span><img src="images/eyes.png" />20865</span></p>
+            </div>
+        </div>
+        <div id="fz"></div>
+
+
+        <!-- 评论区 -->
+        <div class="comment">
+            <h3>评论(23)</h3>
+            <ul>
+                <li class="weui-flex">
+                    <div class="tx"><img src="images/tx.jpg" /></div>
+                    <dl class="weui-flex__item">
+                        <dt>
+                            <h4>曹云</h4>
+                            <p>填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容</p>
+                        </dt>
+                        <dd class="weui-flex">
+                            <time class="weui-cell__bd">48分钟前</time>
+                            <em class="weui-cell__ft">
+                                <img class="dz" src="images/dz.png">56
+                            </em>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="weui-flex">
+                    <div class="tx"><img src="images/tx.jpg" /></div>
+                    <dl class="weui-flex__item">
+                        <dt>
+                            <h4>曹云</h4>
+                            <p>填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容</p>
+                        </dt>
+                        <dd class="weui-flex">
+                            <time class="weui-cell__bd">48分钟前</time>
+                            <em class="weui-cell__ft">
+                                <img class="dz" src="images/dz.png">56
+                            </em>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="weui-flex">
+                    <div class="tx"><img src="images/tx.jpg" /></div>
+                    <dl class="weui-flex__item">
+                        <dt>
+                            <h4>曹云</h4>
+                            <p>填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容</p>
+                        </dt>
+                        <dd class="weui-flex">
+                            <time class="weui-cell__bd">48分钟前</time>
+                            <em class="weui-cell__ft">
+                                <img class="dz" src="images/dz.png">56
+                            </em>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="see_more"  @click="dialog=true">查看所有评论</div>
+
+        <div class="weui-mask weui-mask--visible" v-show="dialog">
+            <div class="weui-dialog weui-dialog--visible">
+                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
+                </div>
+            </div>
+        </div>
+        <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
+    </section>
+    <div class="bottom_line"></div>
+
+    
+
+    <script type="text/javascript" src="common/js/vue.js"></script>
+    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script>
+        
+        
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                dialog:false,
+                video:true
+            },
+            mounted:function(){
+                this.show()
+            },
+            methods:{
+                show:function(){
+                    var that = this;
+                    var md = document.getElementById('media');
+                    md.addEventListener('play',function(){
+                                    that.video = false;
+                     });
+                    md.addEventListener('pause',function(){  
+                        that.video = true;  
+                    }) 
+                },
+                play:function(){
+                    var that = this;
+                    var md = document.getElementById('media')
+                    md.play();
+                    that.video = false;
+                    md.addEventListener('ended',function(){  
+                        that.video = true;  
+                    });
+                }
+            }
+        })
+
+
+        window.onload = function(){
+
+            window.addEventListener('scroll',function(){
+                var tt = document.documentElement.scrollTop || document.body.scrollTop;            
+                document.getElementById('vi_top').style.top = tt + 'px'
+            })
+            var hh =  document.getElementById('vi_top').clientHeight 
+            document.getElementById('fz').style.height = hh + 'px'
+        }
+        
+    </script>
+</body>
+</html>

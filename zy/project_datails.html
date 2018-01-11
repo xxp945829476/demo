@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="资源详情" />
+    <meta name="description" content="资源详情" />
+    <title>资源详情</title>
+    <link rel="stylesheet" type="text/css" href="common/css/base.css">
+    <link rel="stylesheet" type="text/css" href="common/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="common/css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/datails.css">
+
+</head>
+<body>
+    <section id="app" v-cloak>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/banner1.jpg" alt="">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="d_info_box pro_box">
+            <div class="d_info_pad">
+                <h2 class="weui-media-box__title">新零售智能连锁便利店 无人超市</h2>
+                <div class="pro_time">所属行业：新零售</div>
+                <div class="pro_time">发布时间：2017-11-06</div>
+            </div>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells">
+                <h3 class="weui-cell__bd">基本信息</h3>
+            </div>
+            <div class="pro_intro">
+                <h3>项目介绍</h3>
+                <p>我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍我是项目介绍</p>
+            </div>
+            <div class="weui-cell pro_list">
+                <label class="weui-cell__bd">项目需求</label>
+                <span class="weui-cell__ft">融资</span>
+            </div>
+            <div class="weui-cell pro_list">
+                <label class="weui-cell__bd">截止日期</label>
+                <span class="weui-cell__ft">2018-02-20</span>
+            </div>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells">
+                <h3 class="weui-cell__bd">BP/商业计划书</h3>
+            </div>
+            <div class="weui-cell pro_list pro_list_1" @click="dialog=true">
+                <label class="weui-cell__bd">立即查看</label>
+                <span class="weui-cell__ft">
+                    <img class="bp" src="images/bp.png" />
+                    <img src="images/right_angle.png" />
+                    <em class="red_point"></em>
+                </span>
+            </div>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells">
+                <h3 class="weui-cell__bd">公司信息</h3>
+            </div>
+            <div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">公司名称</label>
+                    <span class="weui-cell__ft">博商云软件技术公司</span>
+                </div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">公司地址</label>
+                    <span class="weui-cell__ft">江苏省无锡市滨湖区k-park3号楼</span>
+                </div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">所属行业</label>
+                    <span class="weui-cell__ft">新零售</span>
+                </div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">公司类型</label>
+                    <span class="weui-cell__ft">上市公司</span>
+                </div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">成立时间</label>
+                    <span class="weui-cell__ft">2015-06-30</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells">
+                <h3 class="weui-cell__bd">团队成员({{lists.length}})</h3>
+                <span class="weui-cell__ft pro_all">全部<img src="images/right_angle.png" /></span>
+            </div>
+            <div>
+                <div class="weui-cell company_msg" v-for="(list,index) in lists" :class="{company_all:num==index}" @click="allMain(index)">
+                    <div class="pro_tx"><img :src="list.portrait" /></div>
+                    <dl class="weui-cell__bd pro_name">
+                        <dt>{{list.name}}<span>{{list.position}}</span></dt>
+                        <dd class="weui-media-box__desc">{{list.introduction}}</dd>
+                    </dl>
+                    <div class="weui-cell__ft pro_down"><img src="images/up.png" /></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells">
+                <h3 class="weui-cell__bd">融资信息</h3>
+            </div>
+            <div class="fina_list_box">
+                <div class="weui-flex fina_list">
+                      <div class="fina_time">
+                          <time>2017.10</time>
+                          <p>天使轮</p>
+                          <div class="sjz"><img src="images/sjz.png" /></div>
+                      </div>
+                      <ul class="weui-flex__item fina_msg">
+                          <li>金额：1000万人民币</li>
+                          <li>估值：未披露</li>
+                          <li>联想乐基金</li>
+                      </ul>
+                </div>
+                <div class="weui-flex fina_list">
+                      <div class="fina_time">
+                          <time>2017.10</time>
+                          <p>天使轮</p>
+                          <div class="sjz"><img src="images/sjz.png" /></div>
+                      </div>
+                      <ul class="weui-flex__item fina_msg">
+                          <li>金额：1000万人民币</li>
+                          <li>估值：未披露</li>
+                          <li>联想乐基金</li>
+                      </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d_white">
+            <div class="weui-cell d_need weui-cells">
+                <h3 class="weui-cell__bd">联系信息</h3>
+            </div>
+            <div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">联系人</label>
+                    <span class="weui-cell__ft">徐女士</span>
+                </div>
+                <div class="weui-cell pro_list">
+                    <label class="weui-cell__bd">联系电话</label>
+                    <span class="weui-cell__ft">181****0234</span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="weui-mask weui-mask--visible" v-show="dialog">
+            <div class="weui-dialog weui-dialog--visible">
+                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
+    </section>
+    <div class="bottom_line"></div>
+
+    
+
+    <script type="text/javascript" src="common/js/vue.js"></script>
+    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                dialog:false,
+                num:-1,
+                lists:[
+                    {'portrait':'images/tx.jpg','name':'王辉','position':'总裁',
+                    'introduction':'毕业于哈佛大学附属学院，在专业领域内有着丰富毕业于哈佛大学附属学院，在专业领域内有着丰富'},
+                    {'portrait':'images/tx.jpg','name':'王炸','position':'总裁',
+                    'introduction':'毕业于哈佛大学附属学院，在专业领域内有着丰富毕业于哈佛大学附属学院，在专业领域内有着丰富'},
+                    {'portrait':'images/tx.jpg','name':'王','position':'总裁',
+                    'introduction':'毕业于哈佛大学附属学院，在专业领域内有着丰富毕业于哈佛大学附属学院，在专业领域内有着丰富'}
+                ]
+            },
+            mounted:function(){
+                this.swiper();
+            },
+            methods:{
+               swiper:function(){
+                    new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true,
+                        autoplay : 3000,
+                        loop:true
+                    });
+               },
+               allMain:function(index){
+                    
+                    if(this.num!=index){
+                        this.num = index;
+                    }else{
+                        this.num = -1
+                    }
+               }
+            }
+        })
+    </script>
+</body>
+</html>
