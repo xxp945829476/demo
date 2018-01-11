@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="学习详情" />
+    <meta name="description" content="学习详情" />
+    <title>学习详情</title>
+    <link rel="stylesheet" type="text/css" href="common/css/weui.min.css">
+    <link rel="stylesheet" type="text/css" href="common/css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/datails.css">
+    <link rel="stylesheet" type="text/css" href="css/comment.css">
+
+</head>
+<body>
+    <section id="app" v-cloak>
+        
+        <div class="audio_box">
+            <div class="post"><img src="images/post_pic.jpg" /></div>
+            <audio src="http://res1.eqh5.com/d66a02623d7844dcb1d6c88258ed1cf9.mp3" id="media"></audio>
+            <div class="z_controls">
+                <div class="progress_box" id="progressd" @mousedown="updatebar($event)">
+                    <div class="progress" id="progress" :style="{width:w}"></div>
+                    <div class="td" :style="{left:l}"><img src="images/td.png" /></div>
+                </div>
+                <div class="weui-flex a_time">
+                    <time class="weui-cell__bd" id="time">{{time}}</time>
+                    <time class="weui-cell__ft" id="alltime">{{alltime}}</time>
+                </div>
+                <div class="play_box weui-flex">
+                    <div class="fl" @click="dialog=true"><img src="images/list.png" /></div>
+                    
+                    <div class="weui-flex a_play">
+                        <div class="a_pre" @click="dialog=true"><img src="images/pre.png" /></div>
+                        <div class="weui-flex__item play_icon" @click="play()"><img :src="src" /></div>
+                        <div class="a_next" @click="dialog=true"><img src="images/next.png" /></div>
+                    </div>
+                    <div class="fr" @click="dialog=true"><img src="images/ds.png" /></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="au_msg_box">
+            <div class="v_title au_title weui-cells">
+                <h2 class="weui-media-box__desc">被骂无数，苦战20年，他在全世界的封锁下，为中国拼出世界第一</h2>
+                <p>金融/投融资<time>1小时前</time><span><img src="images/eyes.png" />20865</span></p>
+            </div>
+            <div class="au_msg">
+                随着大量民营企业的上市，市值管理成为当今中国资本市场的一大热点。由于市值管理乃国人首创，无发达市场现成的模板可循，再加上中国新兴资本市场的特色，对市值管理内涵的理解无奇不有，有的将市值管理理解为管理市值，于是走上了操纵股价的道路；有的将市值管理等于投资者关系，以致于投资者调研越多公司市值跌得越多而不知其所以然。
+
+正是由于存在不同的市值管理理解，由此衍生出了千奇百怪的市值管理实践，总体来说形成了六大市值管理模式。
+
+这其中既有违法违规的邪门歪道式的所谓市值管理，也有只及一点无触其它的偏道式的市值管理，当然也有价值创造、价值营销与价值经营并重的市值管理正道。因此，总结当前市场上存在的市值管理模式，对于上市公司全面和正确了解市值管理，从而开展科学、有效和合规的市值管理，具有重要的现实意义。
+            </div>
+        </div>
+
+        <!-- 评论区 -->
+        <div class="comment">
+            <h3>评论(23)</h3>
+            <ul>
+                <li class="weui-flex">
+                    <div class="tx"><img src="images/tx.jpg" /></div>
+                    <dl class="weui-flex__item">
+                        <dt>
+                            <h4>曹云</h4>
+                            <p>填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容</p>
+                        </dt>
+                        <dd class="weui-flex">
+                            <time class="weui-cell__bd">48分钟前</time>
+                            <em class="weui-cell__ft">
+                                <img class="dz" src="images/dz.png">56
+                            </em>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="weui-flex">
+                    <div class="tx"><img src="images/tx.jpg" /></div>
+                    <dl class="weui-flex__item">
+                        <dt>
+                            <h4>曹云</h4>
+                            <p>填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容</p>
+                        </dt>
+                        <dd class="weui-flex">
+                            <time class="weui-cell__bd">48分钟前</time>
+                            <em class="weui-cell__ft">
+                                <img class="dz" src="images/dz.png">56
+                            </em>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="weui-flex">
+                    <div class="tx"><img src="images/tx.jpg" /></div>
+                    <dl class="weui-flex__item">
+                        <dt>
+                            <h4>曹云</h4>
+                            <p>填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容填充内容</p>
+                        </dt>
+                        <dd class="weui-flex">
+                            <time class="weui-cell__bd">48分钟前</time>
+                            <em class="weui-cell__ft">
+                                <img class="dz" src="images/dz.png">56
+                            </em>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="see_more"  @click="dialog=true">查看所有评论</div>
+
+        <div class="weui-mask weui-mask--visible" v-show="dialog">
+            <div class="weui-dialog weui-dialog--visible">
+                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
+                </div>
+            </div>
+        </div>
+        <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
+    </section>
+    <div class="bottom_line"></div>
+
+    
+
+    <script type="text/javascript" src="common/js/vue.js"></script>
+    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script>
+        var vd = document.getElementById('media');
+        
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                dialog:false,
+                video:true,
+                time:'00:00',
+                alltime:'',
+                times:'',
+                w:'',
+                l:'',
+                src:'images/play_icon.png'
+            },
+            mounted:function(){
+                    var that = this;
+                    vd.addEventListener("loadedmetadata",function(){
+                            that.formatSeconds(vd.duration);
+                            that.alltime = that.times
+                     });
+                    vd.addEventListener("timeupdate",function(){
+                            that.formatSeconds(vd.currentTime);
+                            that.time =  that.times;//视频播放位置
+                            that.w = 100 * vd.currentTime/vd.duration + '%'//计算播放精度条
+                            that.l = 100 * vd.currentTime/vd.duration - 2 + '%'
+                    });
+                    vd.addEventListener("ended",function(){
+                        that.src = 'images/play_icon.png'
+                    });
+            },
+            methods:{
+                play:function(){
+                    var that = this;
+                    if(vd.paused){
+                            vd.play();
+                            that.src = 'images/pause_icon.png';
+                            
+                    }else{
+                         vd.pause();
+                         that.src = 'images/play_icon.png';
+                    };
+                },
+                formatSeconds:function(value){//将总时间秒转换为时/分/秒
+                    var that = this;
+                    value = parseInt(value);
+                    var m = Math.floor(value / 60);
+                    var s = Math.floor(value - m*60);
+                    min = that.timep(m);
+                    sec = that.timep(s);
+                    that.times = min + ':' + sec
+                },
+                timep:function(value){
+                    if(value<10){
+                        return "0" + value
+                    }else{
+                        return value
+                    }
+                },
+                updatebar:function(e){
+                        console.log(e.pageX)
+                        x = e.pageX
+                        var maxduration = vd.duration; //Video 
+                        var positions = x - progressd.offsetLeft; //Click pos
+                        var percentage = 100 * positions / progressd.offsetWidth;
+                        //Check within range
+                        if (percentage > 100) {
+                            percentage = 100;
+                        }
+                        if (percentage < 0) {
+                            percentage = 0;
+                        }
+                        this.w = percentage + '%';
+                         vd.currentTime = maxduration * percentage / 100;
+                        console.log(progressd.offsetWidth) 
+                }
+            }
+        })
+
+        
+         
+    </script>
+</body>
+</html>
