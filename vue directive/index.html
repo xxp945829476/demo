@@ -24,22 +24,21 @@
     <script type="text/javascript" src="js/vue.js"></script>
     <script>
         
-        Vue.directive('drag',function(el){
-            el.onmousedown=function(e){
-                 console.log(e)
-                var x = e.clientX - el.offsetLeft;
-                var y = e.clientY - el.offsetTop;
-                console.log(el.offsetTop)
-                document.onmouseover=function(e){
-                    var disx = e.clientX - x;
-                    var disy = e.clientY - y;
+        Vue.directive('drag',function(el){//pc对应onmousedown  区别手机端e.touches[0] touches：表示当前跟踪的触摸操作的touch对象的数组。
+            el.ontouchstart=function(e){
+                var x = e.touches[0].clientX - el.offsetLeft;
+                var y = e.touches[0].clientY - el.offsetTop;
+                console.log(e.touches[0].clientX)
+                document.ontouchmove=function(e){//pc对应onmouseover
+                    var disx = e.touches[0].clientX - x;
+                    var disy = e.touches[0].clientY - y;
                     console.log(disy)
                     el.style.left = disx + 'px';
                     el.style.top = disy + 'px';
                 }
-                document.onmouseup=function(e){
-                    document.onmouseover = null;
-                    document.onmouseup = null
+                document.ontouchend=function(e){//onmouseup
+                    document.ontouchmove = null;
+                    document.ontouchend = null
                 }
             }
         })
