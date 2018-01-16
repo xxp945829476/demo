@@ -110,7 +110,7 @@
         </div>
 
 
-        <my-dialog v-bind:dialog="dialog"  @change="onResultChange"></my-dialog>
+        <my-dialog v-bind:dialog.sync="dialog"></my-dialog>
         
 
         <div class="d_white onload" @click="dialogData">下载逐鱼APP，查看更多资源信息</div>
@@ -157,9 +157,6 @@
                         this.show2 = !this.show2
                         this.isRotate2 = !this.isRotate2
                     }
-               },
-               onResultChange:function(){
-                    this.dialog = false
                },
                dialogData:function(){
                     this.dialog = true

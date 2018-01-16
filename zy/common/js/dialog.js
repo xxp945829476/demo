@@ -31,7 +31,7 @@ var html = '<div class="dialog_box">'+
             // },
           methods: {
                 showData: function(){
-                    this.$emit('change')
+                    this.$emit('update:dialog',false)
                 }
             }
         });

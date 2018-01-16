@@ -59,7 +59,7 @@
         </div>
         <div class="see_more"  @click="dialog=true">查看所有评论</div>
 
-        <my-dialog v-bind:dialog="dialog"  @change="onResultChange"></my-dialog>
+        <my-dialog v-bind:dialog.sync="dialog"></my-dialog>
         <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
     </section>
     <div class="bottom_line"></div>
@@ -91,10 +91,7 @@
                          item.praiseNum = item.praiseNum - 1
                     }
                        
-                },
-                onResultChange:function(){
-                    this.dialog = false
-               }
+                }
             }
         })
     </script>
