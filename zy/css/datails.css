@@ -24,7 +24,7 @@ body{
 }
 .d_info_box h2 img{
 	width: 1.83rem;
-	vertical-align: middle;
+	vertical-align: -0.35em;
 	padding-right: 0.3rem;
 }
 .d_info_box p {
@@ -141,6 +141,8 @@ body{
   }
 }
 
+
+
 /*视频分享*/
 
 video::-webkit-media-controls-enclosure {
@@ -176,7 +178,8 @@ video{
 	padding-left: 1rem;
 }
 .v_title p span img{
-	padding-right: 0.58rem;
+	padding-right: 0.4rem;
+	vertical-align: -0.15em;
 }
 .v_box{
 	position: relative;
@@ -554,3 +557,5 @@ video{
 .live_pic span.hf{
 	background: rgba(0,0,0,0.8);
 }
+
+

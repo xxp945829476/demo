@@ -1840,10 +1840,8 @@ a.weui-media-box:active {
 	z-index: 5000;
 	width: 80%;
 	max-width: 300px;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
+	top: 34vh;
+	left: 10%;
 	background-color: #fff;
 	text-align: center;
 	border-radius: 3px;

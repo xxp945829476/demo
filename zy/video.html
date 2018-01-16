@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="common/css/base.css">
     <link rel="stylesheet" type="text/css" href="css/datails.css">
     <link rel="stylesheet" type="text/css" href="css/comment.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
 
 </head>
 <body>
@@ -23,12 +24,13 @@
                 <video id="media" src="zzz.mp4" controls="controls" preload width="100%"></video>
                 <div class="v_play" v-show="video" @click="play"><img src="images/play.png" /></div>
             </div>
-            <div class="v_title">
-                <h2 class="weui-media-box__desc">被骂无数，苦战20年，他在全世界的封锁下，为中国拼出世界第一</h2>
-                <p>金融/投融资<time>1小时前</time><span><img src="images/eyes.png" />20865</span></p>
-            </div>
         </div>
         <div id="fz"></div>
+        <div class="v_title">
+            <h2 class="weui-media-box__desc">被骂无数，苦战20年，他在全世界的封锁下，为中国拼出世界第一</h2>
+            <p>金融/投融资<time>1小时前</time><span><img src="images/eyes.png" />20865</span></p>
+        </div>
+        
 
 
         <!-- 评论区 -->
@@ -84,15 +86,7 @@
         </div>
         <div class="see_more"  @click="dialog=true">查看所有评论</div>
 
-        <div class="weui-mask weui-mask--visible" v-show="dialog">
-            <div class="weui-dialog weui-dialog--visible">
-                <div class="weui-dialog__bd">下载逐鱼APP，对接广阔企业资源，<br>发现更多潜在商机。</div>
-                <div class="weui-dialog__ft">
-                    <a href="javascript:;" class="weui-dialog__btn default" @click="dialog=false">取消</a>
-                    <a href="javascript:;" class="weui-dialog__btn primary">立刻下载</a>
-                </div>
-            </div>
-        </div>
+        <my-dialog v-bind:dialog="dialog"  @change="onResultChange"></my-dialog>
         <div class="d_white onload" @click="dialog=true">下载逐鱼APP，查看更多资源信息</div>
     </section>
     <div class="bottom_line"></div>
@@ -100,11 +94,8 @@
     
 
     <script type="text/javascript" src="common/js/vue.js"></script>
-    <script type="text/javascript" src="common/js/swiper.min.js"></script>
+    <script src="common/js/dialog.js"></script>
     <script>
-        
-        
-
         var vm = new Vue({
             el:'#app',
             data:{
@@ -133,7 +124,10 @@
                     md.addEventListener('ended',function(){  
                         that.video = true;  
                     });
-                }
+                },
+                onResultChange:function(){
+                    this.dialog = false
+               }
             }
         })
 
