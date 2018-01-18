@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <link rel="stylesheet" type="text/css" href="weui.min.css">
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <title>路由基本用法</title>
+    
+    <style type="text/css">
+    .nav_box{
+        font-size: 0;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .nav{
+        font-size: 16px;
+        text-decoration: none;
+        width: 50%;
+        text-align: center;
+        display: inline-block;
+        line-height: 40px;
+        color: #333;
+    }
+    .router-link-active{
+        color: red
+    }  
+    .login_btn{
+        padding: 80px 15px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .login_btn li{
+        line-height: 40px;
+        margin-top: 20px;
+        background: #efefef;
+        border-radius: 6px;
+    }
+    .qh{
+        margin: 30px auto;
+        background: #ababab;
+        width: 90%;
+        display: block;
+        height: 40px;
+        border-radius: 6px;
+    }
+    a{
+        text-decoration: none;
+    }
+    </style>
+</head>
+<body>
+    <section id="app">
+        <div class="nav_box">
+            <router-link to="/recreation" class="nav">娱乐</router-link>
+            <router-link to="/sport" class="nav">体育</router-link>
+        </div>
+        <div>
+            <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight" >
+                <router-view></router-view>
+            </transition>
+        </div>
+    </section>
+
+    <template id="recreation">
+        <div>
+            <div class="weui-panel__bd" v-for="list in list1">
+              <router-link tag="a" :to="'/home/'+list.id" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                  <img class="weui-media-box__thumb" :src="list.src" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                  <h4 class="weui-media-box__title">{{list.title}}</h4>
+                </div>
+              </router-link>
+            </div>
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <template id="sport">
+        <div class="weui-panel__bd">
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="list in list1">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" :src="list.src" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">{{list.title}}</h4>
+            </div>
+          </a>
+        </div>
+    </template>
+
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/vue-router.min.js"></script>
+    <script>
+
+        
+
+        var Recreations={
+            template:'#recreation',
+            created:function(){
+                this.show()
+            },
+            data:function(){
+                return {
+                     list1:[
+                    {'src':'https://cms-bucket.nosdn.127.net/bf97ff20a80e4fe7b3e7ec16d2101e1320180118102822.png?imageView&thumbnail=220y165&quality=45&type=webp&interlace=1&enlarge=1',
+                        'title':'习近平日内瓦演讲一周年:中国方案备受期待',
+                        'id':1
+                    },
+                    {'src':'https://cms-bucket.nosdn.127.net/bf97ff20a80e4fe7b3e7ec16d2101e1320180118102822.png?imageView&thumbnail=220y165&quality=45&type=webp&interlace=1&enlarge=1',
+                        'title':'习近平日内瓦演讲一周年:中国方案备受期待',
+                        'id':2
+                    },
+               ]  
+                }
+            },
+            watch: {
+                '$route' (to, from) {
+                    console.log(this.$route.params)
+                }
+              },
+            methods:{
+                show(){
+                    console.log(this.$route.params)
+                }
+            }
+        }
+        var Sports={
+            template:'#sport',
+            data:function(){
+                return {
+                     list1:[
+                    {'src':'https://cms-bucket.nosdn.127.net/bf97ff20a80e4fe7b3e7ec16d2101e1320180118102822.png?imageView&thumbnail=220y165&quality=45&type=webp&interlace=1&enlarge=1',
+                        'title':'习近平日内瓦演讲一周年:中国方案备受期待',
+                        'id':3
+                    },
+                    {'src':'https://cms-bucket.nosdn.127.net/bf97ff20a80e4fe7b3e7ec16d2101e1320180118102822.png?imageView&thumbnail=220y165&quality=45&type=webp&interlace=1&enlarge=1',
+                        'title':'习近平日内瓦演讲一周年:中国方案备受期待',
+                        'id':4
+                    },
+                    {'src':'https://cms-bucket.nosdn.127.net/bf97ff20a80e4fe7b3e7ec16d2101e1320180118102822.png?imageView&thumbnail=220y165&quality=45&type=webp&interlace=1&enlarge=1',
+                        'title':'习近平日内瓦演讲一周年:中国方案备受期待',
+                        'id':5
+                    },
+               ]  
+                }
+            }
+        }
+
+        var homes={
+            template:'<div>文章sadasdad asd as as  a s a as aa  asdasd  asd</div>'
+        }
+       
+        var routes=[
+            { 
+                path: '/', 
+                redirect: '/recreation' 
+            },
+            {
+                path:'/recreation',
+                component:Recreations,
+                children:[
+                    {path:'/home/:id',component:homes}
+                ]
+            },
+            {
+                path:'/sport',
+                component:Sports,
+            }
+        ]
+
+        var router=new VueRouter({
+            routes: routes
+        })
+        
+
+        var vm = new Vue({
+            el:'#app',
+            router:router,
+            data:{
+              
+            },
+            methods:{
+
+            }
+
+        })
+
+        
+         
+    </script>
+</body>
+</html>

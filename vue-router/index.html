@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="animate.min.css">
+    <title>路由基本用法</title>
+    
+    <style type="text/css">
+    .nav_box{
+        font-size: 0;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .nav{
+        font-size: 16px;
+        text-decoration: none;
+        width: 50%;
+        text-align: center;
+        display: inline-block;
+        line-height: 40px;
+        color: #333;
+    }
+    .router-link-active{
+        color: red
+    }  
+    .login_btn{
+        padding: 80px 15px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .login_btn li{
+        line-height: 40px;
+        margin-top: 20px;
+        background: #efefef;
+        border-radius: 6px;
+    }
+    .qh{
+        margin: 30px auto;
+        background: #ababab;
+        width: 90%;
+        display: block;
+        height: 40px;
+        border-radius: 6px;
+    }
+    </style>
+</head>
+<body>
+    <section id="app">
+        <div class="nav_box">
+            <router-link to="/home" class="nav">主页</router-link>
+            <router-link to="/User" class="nav">用户</router-link>
+        </div>
+        <div>
+            <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight" >
+                <router-view></router-view>
+            </transition>
+        </div>
+
+        <button @click="push()" class="qh">点击切换路由</button>
+        <button @click="replace()" class="qh">点击切换路由无历史记录</button>
+        
+    </section>
+
+    <template id="use">
+        <div>
+            <ul class="login_btn">
+                <router-link to="/login?name=tom&age=18" tag="li">登录</router-link>
+                <router-link to="/regist/jack/456" tag="li">注册</router-link>
+            </ul>
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/vue-router.min.js"></script>
+    <script>
+        var Homes={
+            template:'<div>主页</div>'
+        }
+        var Users={
+            template:'#use'
+        }
+        var Logins={
+            template:'<div>用户登录 获取参数{{$route.query}}</div>',
+            created:function(){
+                this.show()
+            },
+            methods:{
+                show:function(){
+                    console.log(this.$route.query)
+                }
+            }
+        }
+        var Regists={
+            template:'<div>用户注册 获取参数{{$route.params}}</div>'
+        }
+
+        var routes=[
+            { 
+                path: '/', 
+                redirect: '/home' 
+            },
+            {
+                path:'/home',
+                component:Homes
+            },
+            {
+                path:'/User',
+                component:Users,
+                children:[
+                    {path:'/login',component:Logins},
+                    {path:'/regist/:usename/:password',component:Regists},
+                ]
+            }
+        ]
+
+        var router=new VueRouter({
+            routes: routes
+        })
+        
+
+        var vm = new Vue({
+            el:'#app',
+            router:router,
+            data:{
+                
+            },
+            methods:{
+                push(){
+                    router.push({path:'home'})
+                },
+                replace(){
+                    router.replace({path:'User'})
+                }
+            }
+
+        })
+
+        
+         
+    </script>
+</body>
+</html>
