@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>
+            姓名
+            <input type="text" name="" id="name" placeholder="请输入">
+            <input type="tel" name="" id="tel" placeholder="请输入">
+        </label>
+    </div>
+    <button onclick="setCookie('username','tel',20)">点击提交</button>
+    <script type="text/javascript">
+    function setCookie(cname,tel,exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString(); //expires=Fri, 30 Mar 2018 07:16:13 GMT
+        var cvalue = document.getElementById('name').value;
+        var tvalue = document.getElementById('tel').value;
+        document.cookie = cname + "=" + cvalue + ";" + expires;
+        document.cookie = tel + "=" + tvalue + ";" + expires;
+    }
+
+    function getCookie(cname,tel) {
+        var name = cname + "=";
+        var tel = tel + "=";
+        var ca = document.cookie.split(';');
+        console.log(ca)
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[0].trim();
+            var n = ca[1].trim();
+            console.log(tel.length)
+            document.getElementById('name').value = c.substring(name.length, c.length)
+            document.getElementById('tel').value = n.substring(tel.length, n.length)
+        }
+    }
+
+    function romoveCookie(cname,exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString(); //expires=Fri, 30 Mar 2018 07:16:13 GMT
+        var cvalue = document.getElementById('name').value;
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+    getCookie("username","tel");
+    // romoveCookie("username",-1)
+    </script>
+</body>
+
+</html>
